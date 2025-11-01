@@ -1,0 +1,6 @@
+# ignore enviroments files
+.venv/
+
+# ignore data base files
+*.db
+*.sqlite3

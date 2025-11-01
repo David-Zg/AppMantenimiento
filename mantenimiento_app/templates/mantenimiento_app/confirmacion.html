@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmación - Informe Creado</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .confirmation-container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #28a745;
+            margin-bottom: 20px;
+        }
+        .info-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+            text-align: left;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+        .btn:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="confirmation-container">
+        <h1>✅ ¡Informe Creado Exitosamente!</h1>
+        
+        <div class="info-card">
+            <h3>Resumen del Informe:</h3>
+            <p><strong>ID del Informe:</strong> {{ informe.id }}</p>
+            <p><strong>Equipo:</strong> {{ informe.equipo }}</p>
+            <p><strong>Número de Serie:</strong> {{ informe.numero_serie }}</p>
+            <p><strong>Ubicación:</strong> {{ informe.ubicacion }}</p>
+            <p><strong>Tipo de Mantenimiento:</strong> {{ informe.get_tipo_mantenimiento_display }}</p>
+            <p><strong>Técnico:</strong> {{ informe.tecnico }}</p>
+            <p><strong>Fecha:</strong> {{ informe.fecha_mantenimiento }}</p>
+        </div>
+        
+        <div class="actions">
+            <a href="{% url 'mantenimiento_app:descargar_pdf' informe.id %}" class="btn btn-primary">
+                📄 Descargar PDF
+            </a>
+            <br>
+            <a href="{% url 'mantenimiento_app:formulario' %}" class="btn btn-secondary">
+                ➕ Crear Otro Informe
+            </a>
+        </div>
+    </div>
+</body>
+</html>
